@@ -4,7 +4,25 @@ export default async function handler(req, res) {
     return;
   }
 
-  // For now this is just a ping so we know the backend route works.
-  // Your front-end calling /api/generate will now get a 200 response.
-  res.status(200).json({ ok: true, message: 'API is alive' });
+  try {
+    const { title, description } = req.body;
+
+    if (!title || !description) {
+      res.status(400).json({ error: 'Missing title or description' });
+      return;
+    }
+
+    // Example: call your AI or eBay API here
+    // Replace this with actual logic
+    const generatedData = {
+      seoTitle: `${title} | Optimized eBay Listing`,
+      seoDescription: `${description} — Generated with AI for maximum visibility.`,
+      priceSuggestion: '$39.99'
+    };
+
+    res.status(200).json({ success: true, data: generatedData });
+  } catch (error) {
+    console.error('Error generating listing:', error);
+    res.status(500).json({ success: false, error: 'Internal server error' });
+  }
 }
