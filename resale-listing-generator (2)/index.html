@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Resale Listing Generator</title>
+</head>
+<body>
+  <h1>Upload Your Item</h1>
+  <form id="upload-form" enctype="multipart/form-data" method="post" action="/api/generate">
+    <input type="file" name="images" multiple accept="image/*" required>
+    <textarea name="description" placeholder="Brief description of the item" required></textarea>
+    <button type="submit">Generate Listing</button>
+  </form>
+</body>
+</html>
